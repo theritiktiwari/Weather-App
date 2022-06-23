@@ -16,7 +16,7 @@ const City = ({ siteName, router, city, weather, currentWeather, hourlyWeather, 
         return () => {
             router.events.off("routeChangeComplete", clearScreen)
         }
-    }, [])
+    }, [router])
 
     const searchMore = () => {
         box ? box.style.display = 'block' : null;
