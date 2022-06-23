@@ -6,9 +6,13 @@ const Search = ({ router }) => {
     const [query, setQuery] = useState();
     const [result, setResult] = useState();
 
-    // useEffect(() => {
-    //     setQuery()
-    // }, [router]);
+    useEffect(() => {
+        const clearQuery = () => setQuery("");
+        router.events.on("routeChangeComplete", clearQuery)
+        return () => {
+            router.events.off("routeChangeComplete", clearQuery)
+        }
+    }, [])
 
 
     const onChange = (e) => {
